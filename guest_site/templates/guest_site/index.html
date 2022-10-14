@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-transparent position-absolute top-0 col-12">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/hms_logo.png' %}" alt="logo"
+                class="img-fluid" width="70px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link" href="#">Specialists</a>
+                </li>
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                {% else %}
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                </li>
+                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
+                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HEADER BANNER -->
+<section class="banner">
+    <div class="container p-4 p-md-0">
+        <div class="text-white col-12 col-lg-7">
+            <h3>The best treatment provided by the best:</h3>
+            <div class="row py-2 gap-2">
+                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Cardiologists</span>
+                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Dermatologists</span>
+                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Gynecologists</span>
+                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Pediatricians</span>
+                <span class="col-12 col-md p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Ophthalmologists</span>
+                <span class="col-12 col-md p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">General Surgeons</span>
+            </div>
+        </div>
+        <div class="best position-absolute bottom-0 end-0 translate-middle hidden">
+            <div style="background: var(--card_bg_inclined); box-shadow: 0 3px 5px #E5E5E5;"
+                class="p-3 pe-md-5 rounded">
+                <h5 class="text-white">The best we have:</h5>
+                <div class="d-flex col-12 best_cont gap-1">
+                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                        width="40px" height="40px">
+                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                        width="40px" height="40px">
+                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                        width="40px" height="40px">
+                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                        width="40px" height="40px">
+                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                        width="40px" height="40px">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section></section>
+
+
+<style>
+    nav a {
+        color: white !important;
+    }
+
+    .banner {
+        background-image: url("{% static 'images/banner_img.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: darken;
+        background-color: rgba(0, 0, 0, .4);
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    .banner h3,
+    .banner h5 {
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+
+    .banner .doctor_type.hidden {
+        opacity: 0%;
+        transform: translateX(-100%);
+        transition: all .6s;
+    }
+
+    .banner .doctor_type.show {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+
+    .banner .doctor_type:nth-child(2) {
+        transition-delay: .3s;
+    }
+
+    .banner .doctor_type:nth-child(3) {
+        transition-delay: .6s;
+    }
+
+    .banner .doctor_type:nth-child(4) {
+        transition-delay: .9s;
+    }
+
+    .banner .doctor_type:nth-child(5) {
+        transition-delay: 1.2s;
+    }
+
+    .banner .doctor_type:nth-child(6) {
+        transition-delay: 1.5s;
+    }
+
+    .banner .best.hidden {
+        transform: translateX(100%);
+        opacity: 0;
+        transition: all .6s;
+    }
+
+    .banner .best.show {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+        .banner .best {
+            width: fit-content;
+        }
+    }
+</style>
+
+<script defer>
+    if (window.innerWidth < 768) {
+        $(".banner .best").removeClass("position-absolute bottom-0 end-0 translate-middle").addClass("mt-3 ms-auto col-10")
+        $(".banner .best .best_cont").addClass("overflow-auto")
+    }
+
+    const observer = new IntersectionObserver((objects) => {
+        objects.forEach((object) => {
+            if (object.isIntersecting) {
+                object.target.classList.add("show")
+            } else {
+                object.target.classList.remove("show")
+            }
+        })
+    })
+    const doctor_types = document.querySelectorAll(".doctor_type")
+    doctor_types.forEach((type) => observer.observe(type))
+
+    document.querySelectorAll(".banner .best").forEach((element) => observer.observe(element))
+</script>
+{% endblock main %}
