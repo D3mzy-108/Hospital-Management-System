@@ -2,97 +2,402 @@
 {% load static %}
 
 {% block main %}
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-transparent position-absolute top-0 col-12">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/hms_logo.png' %}" alt="logo"
-                class="img-fluid" width="70px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link" href="#">Specialists</a>
-                </li>
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link" href="#">Contact Us</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                {% if request.user.is_authenticated %}
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link" href="#">Dashboard</a>
-                </li>
-                {% else %}
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                </li>
-                <li class="nav-item px-2 rounded mx-1" style="background: var(--card_bg);">
-                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                </li>
-                {% endif %}
+<div class="col-12" style="max-width: 100vw; overflow-x: hidden;">
 
-            </ul>
-        </div>
-    </div>
-</nav>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-transparent position-absolute top-0 col-12">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/hms_logo.png' %}" alt="logo"
+                    class="img-fluid" width="70px"></a>
+            <a class="navbar-toggler" role="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars-staggered fs-3"></i>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="#management">Management System</a>
+                    </li>
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="#specialists">Specialists</a>
+                    </li>
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="#contacts">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item px-2 rounded mx-1">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
 
-<!-- HEADER BANNER -->
-<section class="banner">
-    <div class="container p-4 p-md-0">
-        <div class="text-white col-12 col-lg-7">
-            <h3>The best treatment provided by the best:</h3>
-            <div class="row py-2 gap-2">
-                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
-                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Cardiologists</span>
-                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
-                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Dermatologists</span>
-                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
-                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Gynecologists</span>
-                <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
-                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Pediatricians</span>
-                <span class="col-12 col-md p-2 p-md-3 rounded fs-5 doctor_type hidden"
-                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">Ophthalmologists</span>
-                <span class="col-12 col-md p-2 p-md-3 rounded fs-5 doctor_type hidden"
-                    style="background: var(--card_bg); box-shadow: 0 2px 3px #E5E5E5;">General Surgeons</span>
+                </ul>
             </div>
         </div>
-        <div class="best position-absolute bottom-0 end-0 translate-middle hidden">
-            <div style="background: var(--card_bg_inclined); box-shadow: 0 3px 5px #E5E5E5;"
-                class="p-3 pe-md-5 rounded">
-                <h5 class="text-white">The best we have:</h5>
-                <div class="d-flex col-12 best_cont gap-1">
-                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
-                        width="40px" height="40px">
-                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
-                        width="40px" height="40px">
-                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
-                        width="40px" height="40px">
-                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
-                        width="40px" height="40px">
-                    <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
-                        width="40px" height="40px">
+    </nav>
+
+    <!-- HEADER BANNER -->
+    <section class="banner">
+        <div class="container p-4 p-md-0">
+            <div class="text-white col-12 col-lg-7">
+                <h3>The best treatment provided by the best:</h3>
+                <div class="row py-2 gap-2">
+                    <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                        style="background: var(--card_bg_transparent); box-shadow: 0 2px 3px #E5E5E5;">Cardiologists</span>
+                    <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                        style="background: var(--card_bg_transparent); box-shadow: 0 2px 3px #E5E5E5;">Dermatologists</span>
+                    <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                        style="background: var(--card_bg_transparent); box-shadow: 0 2px 3px #E5E5E5;">Gynecologists</span>
+                    <span class="col p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                        style="background: var(--card_bg_transparent); box-shadow: 0 2px 3px #E5E5E5;">Pediatricians</span>
+                    <span class="col-12 col-md p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                        style="background: var(--card_bg_transparent); box-shadow: 0 2px 3px #E5E5E5;">Ophthalmologists</span>
+                    <span class="col-12 col-md p-2 p-md-3 rounded fs-5 doctor_type hidden"
+                        style="background: var(--card_bg_transparent); box-shadow: 0 2px 3px #E5E5E5;">General
+                        Surgeons</span>
+                </div>
+            </div>
+            <div class="best position-absolute bottom-0 end-0 translate-middle hidden">
+                <div style="background: var(--card_bg_inclined); box-shadow: 0 3px 5px #E5E5E5;"
+                    class="p-3 pe-md-5 rounded">
+                    <h5 class="text-white">The best we have:</h5>
+                    <div class="d-flex col-12 best_cont gap-1">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                            width="40px" height="40px">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                            width="40px" height="40px">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                            width="40px" height="40px">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                            width="40px" height="40px">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid rounded-pill"
+                            width="40px" height="40px">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- SERVICES -->
-<section></section>
+    <!-- SERVICES -->
+    <section class="px-4 px-md-0 services" id="services">
+        <div class="container py-5">
+            <h3 class="text-center py-3">What services do we offer?</h3>
+
+            <div class="row p-0">
+                <div class="col-12 col-md-6 col-lg-4 p-2 card_wrapper">
+                    <div class="card rounded-0 shadow-sm border-0 col p-3 col-12">
+                        <div class="d-flex align-items-top">
+                            <span class="fs-3 pe-3 text-danger"><i class="fa-solid fa-heart-circle-bolt"></i></span>
+                            <div>
+                                <h5>Cardiology</h5>
+                                <span>we treat many cardiovascular conditions, such as:
+                                    high blood pressure,
+                                    high cholesterol,
+                                    heart attack and stroke,
+                                    heart rhythm problems,
+                                    congestive heart failure, e.t.c.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 card_wrapper">
+                    <div class="card rounded-0 shadow-sm border-0 col p-3 col-12">
+                        <div class="d-flex align-items-top">
+                            <span class="fs-3 pe-3" style="color: pink;"><i class="fa-solid fa-droplet"></i></span>
+                            <div>
+                                <h5>Dermatology</h5>
+                                <span>We treat conditions such as eczema, skin cancer, acne, and psoriasis.
+                                    We also perform some in-office procedures, including mole or spot removal, and we
+                                    also offer aesthetic procedures.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 card_wrapper">
+                    <div class="card rounded-0 shadow-sm border-0 col p-3 col-12">
+                        <div class="d-flex align-items-top">
+                            <span class="fs-3 pe-3" style="color: purple;"><i
+                                    class="fa-solid fa-person-pregnant"></i></span>
+                            <div>
+                                <h5>Gynecology</h5>
+                                <span>we provide care for female health conditions like
+                                    female reproductive health,
+                                    cancer prevention and diagnosis in the reproductive organs,
+                                    pregnancy,
+                                    labor,
+                                    infertility,
+                                    menopause.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 card_wrapper">
+                    <div class="card rounded-0 shadow-sm border-0 col p-3 col-12">
+                        <div class="d-flex align-items-top">
+                            <span class="fs-3 pe-3 text-warning"><i class="fas fa-children"></i></span>
+                            <div>
+                                <h5>Pediatrics</h5>
+                                <span>well-baby and well-child visits,
+                                    school or sports physicals,
+                                    childhood vaccines,
+                                    disease prevention for children and babies,
+                                    treating illnesses and injuries in children and babies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 card_wrapper">
+                    <div class="card rounded-0 shadow-sm border-0 col p-3 col-12">
+                        <div class="d-flex align-items-top">
+                            <span class="fs-4 pe-3"><i class="fas fa-eye"></i></span>
+                            <div>
+                                <h5>Ophthalmology</h5>
+                                <span>we specialize in eye and vision care, treat diseases and conditions of the eyes
+                                    and can perform eye surgery. We also see people for routine eye care, including
+                                    prescribing glasses and performing checkups</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 p-2 card_wrapper">
+                    <div class="card rounded-0 shadow-sm border-0 col p-3 col-12">
+                        <div class="d-flex align-items-top">
+                            <span class="fs-3 pe-3 text-primary"><i class="fa-solid fa-syringe"></i></span>
+                            <div>
+                                <h5>General Surgery</h5>
+                                <span>we have training in diseases of the: abdomen, breast, endocrine system,
+                                    gastrointestinal system, skin, and also care for a person both before and after
+                                    their surgery.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANAGEMENT SYSTEM -->
+    <section id="management" class="px-4 px-md-0 management">
+        <div class="container py-5">
+            <h3 class="text-center py-3">What is the management system?</h3>
+            <p class="col-12 col-md-9 mx-auto" style="text-align: center;">The management system is a simple way for you
+                to get diagnosed and make appointments
+                on your phone. You can just describe how you're feeling and the system will show you the most likely
+                illness you're suffering from. This also helps give the doctors a heads up when you make an appointment
+                and reduces the time spent before treatment can begin. You can also find some prescriptions made by our
+                experts so you don't neccessarily have to go to the hospital.</p>
+
+            <!-- HOW IT WORKS -->
+            <h3 class="text-center py-3 mt-5 pt-5">How it works</h3>
+
+            <div class="d-flex flex-wrap align-items-center m-0 p-0">
+                <div class="col-12 col-md-6 col-lg-7 p-3">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut praesentium tempora doloremque
+                        eligendi, soluta itaque consequuntur vel asperiores sapiente, eius tenetur alias eos, minus
+                        culpa minima incidunt? Iste, sequi? Voluptates sunt sit asperiores repellat doloremque
+                        architecto facere tempore culpa suscipit exercitationem dolore repudiandae nostrum voluptatem
+                        libero quidem aliquam debitis odit eaque enim consectetur accusantium, illo autem, incidunt
+                        modi! Repellendus, sit!</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-5 p-3 text-end">
+                    <img src="{% static 'images/case1.jpg' %}" alt="" class="img-fluid col-12">
+                </div>
+            </div>
+            <div class="d-flex flex-wrap align-items-center m-0 p-0">
+                <div class="col-12 col-md-6 col-lg-5 p-3 text-end">
+                    <img src="{% static 'images/case2.jpg' %}" alt="" class="img-fluid col-12">
+                </div>
+                <div class="col-12 col-md-6 col-lg-7 p-3">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut praesentium tempora doloremque
+                        eligendi, soluta itaque consequuntur vel asperiores sapiente, eius tenetur alias eos, minus
+                        culpa minima incidunt? Iste, sequi? Voluptates sunt sit asperiores repellat doloremque
+                        architecto facere tempore culpa suscipit exercitationem dolore repudiandae nostrum voluptatem
+                        libero quidem aliquam debitis odit eaque enim consectetur accusantium, illo autem, incidunt
+                        modi! Repellendus, sit!</span>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap align-items-center m-0 p-0">
+                <div class="col-12 col-md-6 col-lg-7 p-3">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut praesentium tempora doloremque
+                        eligendi, soluta itaque consequuntur vel asperiores sapiente, eius tenetur alias eos, minus
+                        culpa minima incidunt? Iste, sequi? Voluptates sunt sit asperiores repellat doloremque
+                        architecto facere tempore culpa suscipit exercitationem dolore repudiandae nostrum voluptatem
+                        libero quidem aliquam debitis odit eaque enim consectetur accusantium, illo autem, incidunt
+                        modi! Repellendus, sit!</span>
+                </div>
+                <div class="col-12 col-md-6 col-lg-5 p-3 text-end">
+                    <img src="{% static 'images/case3.jpg' %}" alt="" class="img-fluid col-12">
+                </div>
+            </div>
+            <div class="d-flex flex-wrap align-items-center m-0 p-0">
+                <div class="col-12 col-md-6 col-lg-5 p-3 text-end">
+                    <img src="{% static 'images/case4.jpg' %}" alt="" class="img-fluid col-12">
+                </div>
+                <div class="col-12 col-md-6 col-lg-7 p-3">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut praesentium tempora doloremque
+                        eligendi, soluta itaque consequuntur vel asperiores sapiente, eius tenetur alias eos, minus
+                        culpa minima incidunt? Iste, sequi? Voluptates sunt sit asperiores repellat doloremque
+                        architecto facere tempore culpa suscipit exercitationem dolore repudiandae nostrum voluptatem
+                        libero quidem aliquam debitis odit eaque enim consectetur accusantium, illo autem, incidunt
+                        modi! Repellendus, sit!</span>
+                </div>
+             rounded</div>
+        </div>
+    </section>
+
+
+    <!-- SPECIALISTS -->
+    <section id="specialists" class="px-4 px-md-0 specialists">
+        <div class="container py-5">
+            <h3 class="text-center py-3">our specialists</h3>
+            <div class="row m-0 p-0">
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3 p-2">
+                    <div class="col-12 p-3 text-center" style="background: var(--card_bg);">
+                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff" class="img-fluid col-8 rounded-pill"><br>
+                        <span class="fs-5">Doctor's Name</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACTS -->
+    <section id="contacts" class="px-4 px-md-0 contacts" style="min-height: fit-content; height: fit-content !important;">
+        <div class="container py-5">
+            <h3 class="text-center py-3">contact us</h3>
+
+            <div class="row p-0 m-0 gap-2">
+                <div class="col py-5 text-center" style="display: grid; place-items: center; background: var(--card_bg_transparent);">
+                    <i class="fs-2 text-primary fas fa-phone"></i><br>
+                    <span>+234 808 299 5430</span>
+                </div>
+                <div class="col py-5 text-center" style="display: grid; place-items: center; background: var(--card_bg_transparent);">
+                    <i class="fs-2 text-danger fas fa-envelope"></i><br>
+                    <span>hms.developers@gmail.com</span>
+                </div>
+                <a href="https://github.com/D3mzy-108/Hospital-Management-System" target="_blank" class="col py-5 text-center text-dark text-decoration-none" style="display: grid; place-items: center; background: var(--card_bg_transparent);">
+                    <i class="fs-2 text-dark fab fa-github"></i><br>
+                    <span>https://github.com/D3mzy-108/Hospital-Management-System</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
 
 
 <style>
+    nav {
+        transition: all .3s;
+    }
+
+    nav li {
+        background: var(--card_bg_transparent);
+    }
+
     nav a {
         color: white !important;
+    }
+
+    nav.active {
+        position: fixed;
+        background: var(--body_bg);
+        z-index: 2;
+    }
+
+    nav.active li {
+        background: var(--card_bg);
+    }
+
+    nav.active a {
+        color: var(--text_color) !important;
+    }
+
+    section {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
     }
 
     .banner {
@@ -105,6 +410,7 @@
         height: 100vh;
         display: grid;
         place-items: center;
+        background-attachment: fixed;
     }
 
     .banner h3,
@@ -155,9 +461,41 @@
         opacity: 100%;
     }
 
+    .services .card {
+        background: var(--card_bg_transparent);
+        box-shadow: none !important;
+        position: relative;
+    }
+
+    .services .card_wrapper:nth-child(odd) .card::before {
+        content: '';
+        width: 50px;
+        height: 50px;
+        background: rgba(252, 252, 252, 0.2);
+        position: absolute;
+        top: -20px;
+        left: -20px;
+    }
+
+    .services .card_wrapper:nth-child(even) .card::after {
+        content: '';
+        width: 50px;
+        height: 50px;
+        background: rgba(252, 252, 252, 0.2);
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+    }
+
     @media screen and (min-width: 768px) {
         .banner .best {
             width: fit-content;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        nav ul li {
+            margin-top: 10px !important;
         }
     }
 </style>
@@ -181,5 +519,14 @@
     doctor_types.forEach((type) => observer.observe(type))
 
     document.querySelectorAll(".banner .best").forEach((element) => observer.observe(element))
+
+    window.onscroll = () => {
+        if (window.scrollY > 500) {
+            $("nav").addClass("active").removeClass("position-absolute")
+        } else {
+            $("nav").removeClass("active").addClass("position-absolute")
+        }
+    }
+
 </script>
 {% endblock main %}
