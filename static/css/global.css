@@ -6,9 +6,11 @@
 
 :root {
     --body_bg: linear-gradient(#F3F4F6, #EFF0F2);
-    --card_bg: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4)) /*#f5f6f881*/;
+    --card_bg: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4))
+        /*#f5f6f881*/
+    ;
     --card_bg_inclined: linear-gradient(to bottom right, rgba(255, 255, 255, .1)0% 30%, rgba(255, 255, 255, .2) 40% 60%, rgba(255, 255, 255, .1) 70% 100%);
-    --card_bg_transparent: linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .2));
+    --card_bg_transparent: rgba(255, 255, 255, .1);
     --red_shade: #DBA8A7;
     --blue_shade: #CBDBFA;
     --green_shade: #E3F3D8;
@@ -20,10 +22,16 @@
 body {
     background: var(--body_bg);
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
+    overflow: auto;
 }
 
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-transform: capitalize;
 }
