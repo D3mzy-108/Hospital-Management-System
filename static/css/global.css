@@ -26,6 +26,16 @@ body {
     overflow: auto;
 }
 
+.sidenav_wrapper{
+    width: 7vw;
+}
+
+.sidenav{
+    background: var(--card_bg);
+    box-shadow: var(--shadow);
+    border-radius: 1vw;
+}
+
 
 h1,
 h2,
