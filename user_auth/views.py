@@ -51,3 +51,6 @@ def signup(request):
         'form': form,
     }
     return render(request, "user_auth/register.html", context)
+
+def edit_profile(request):
+    return render(request, 'user_auth/edit.html')
