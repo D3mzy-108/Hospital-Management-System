@@ -38,17 +38,17 @@
                     </li>
                     {% elif request.user.staff_type == 'doctor' %}
                     <li class="nav-item px-2 rounded mx-1">
-                        <a class="nav-link" href="{% url 'doctor_dashboard' %}">Dashboard</a>
+                        <a class="nav-link" href="{% url 'doctor_dashboard' request.user.username %}">Dashboard</a>
                     </li>
                     {% elif request.user.staff_type == 'nurse' %}
                     <li class="nav-item px-2 rounded mx-1">
                         <a class="nav-link" href="#">Dashboard</a>
                     </li>
-                    {% endif %}
                     {% elif request.user.staff_type == 'none' %}
                     <li class="nav-item px-2 rounded mx-1">
-                        <a class="nav-link" href="{% url 'patient_dashboard' %}">Dashboard</a>
+                        <a class="nav-link" href="{% url 'patient_dashboard' request.user.username %}">Dashboard</a>
                     </li>
+                    {% endif %}
                     {% else %}
                     <li class="nav-item px-2 rounded mx-1">
                         <a class="nav-link" href="{% url 'login' %}">Log In</a>

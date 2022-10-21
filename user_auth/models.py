@@ -11,4 +11,5 @@ class User(AbstractUser):
         ('nurse', 'Nurse'),
     ]
     staff_type = models.CharField(max_length=50, choices=staff_types, default="none")
+    phone = models.CharField(max_length=15, null=True, blank=True)
 

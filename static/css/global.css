@@ -34,8 +34,36 @@ body {
     background: var(--card_bg);
     box-shadow: var(--shadow);
     border-radius: 1vw;
+    height: calc(100vh - 2rem);
 }
 
+.main{
+    height: calc(100vh - 4rem);
+    overflow: auto;
+}
+
+.card{
+    background: var(--card_bg);
+}
+
+.profile_cont .card{
+    height: calc(100vh - 4rem);
+}
+
+@media screen and (max-width: 991px) {
+    .sidenav_wrapper{
+        width: 100vw;
+    }
+    .sidenav img{
+        max-width: 40px;
+    }
+    .sidenav{
+        height: fit-content;
+    }
+    .sidenav a{
+        position: static !important;
+    }
+}
 
 h1,
 h2,
@@ -76,7 +104,8 @@ h6 {
 }
 
 .form-content .form-items {
-    border: 3px solid #fff;
+    box-shadow: var(--shadow);
+    background: var(--card_bg_inclined);
     padding: 40px;
     display: inline-block;
     width: 100%;
@@ -90,7 +119,7 @@ h6 {
 }
 
 .form-content h3 {
-    color: #fff;
+    color: var(--text_color);
     text-align: left;
     font-size: 28px;
     font-weight: 600;
@@ -102,7 +131,7 @@ h6 {
 }
 
 .form-content p {
-    color: #fff;
+    color: var(--text_color);
     text-align: left;
     font-size: 17px;
     font-weight: 300;
@@ -112,23 +141,24 @@ h6 {
 
 
 .form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
-    color: #fff;
+    color: var(--text_color);
 }
 
 .form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
     width: 100%;
-    padding: 9px 20px;
+    padding: 9px;
     text-align: left;
     border: 0;
     outline: 0;
     border-radius: 6px;
-    background-color: #fff;
+    background: var(--card_bg);
     font-size: 15px;
     font-weight: 300;
-    color: #8D8D8D;
+    color: var(--text_color);
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    margin-top: 16px;
+    margin-top: 8px;
+    margin-bottom: 16px;
 }
 
 

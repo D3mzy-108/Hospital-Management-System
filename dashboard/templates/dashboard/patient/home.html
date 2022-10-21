@@ -11,6 +11,13 @@
     <div class="sidenav_wrapper">
         {% include "partials/patient_side_nav.html" %}
     </div>
-    <div class="col"></div>
+    <div class="col-12 col-lg row g-3">
+        <div class="col-12 col-md" style="max-height: calc(100vh - 4rem); overflow: hidden;">
+            {% include "dashboard/patient/dashboard.html" %}
+        </div>
+        <div class="col-4 profile_cont d-none d-lg-block">
+            {% include "partials/profile_wrapper.html" %}
+        </div>
+    </div>
 </div>
 {% endblock main %}

@@ -17,22 +17,16 @@ def login(request):
             if user.is_active:
                 auth.login(request, user)
                 return redirect('home')
-            else:
-                return render(request, 'user_auth/register.html')
         elif user is not None and user.staff_type == 'doctor':
             if user.is_active:
                 auth.login(request, user)
-                return redirect('doctor_dashboard')
-            else:
-                return render(request, 'user_auth/register.html')
+                return redirect('doctor_dashboard', username)
         elif user is not None and user.staff_type == 'none':
             if user.is_active:
                 auth.login(request, user)
-                return redirect('patient_dashboard')
-            else:
-                return render(request, 'user_auth/register.html')
+                return redirect('patient_dashboard', username)
         else:
-            return render(request, 'user_auth/register.html')
+            return redirect('login')
     context = {}
     return render(request, "user_auth/login.html", context)
 
@@ -51,3 +45,8 @@ def signup(request):
         'form': form,
     }
     return render(request, "user_auth/register.html", context)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

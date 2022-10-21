@@ -1,0 +1,14 @@
+{% load static %}
+
+<div class="main" id="dashboard">
+    <div class="card border-0 p-3 col-12 rounded">
+        <div class="d-block d-md-flex align-items-center">
+            <div class="d-block d-md-none col-12 text-center mb-3"><img src="{% static 'images/vector.png' %}" alt="vector image" class="img-fluid col-9"></div>
+            <div class="col-12 col-md-8 px-4">
+                <h4>Good Evening {{request.user.username}}</h4>
+                <p>You were last seen on {{request.user.last_login}}</p>
+            </div>
+            <div class="d-none d-md-block col-md-4 text-center"><img src="{% static 'images/vector.png' %}" alt="vector image" class="img-fluid col-9"></div>
+        </div>
+    </div>
+</div>
