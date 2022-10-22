@@ -11,4 +11,64 @@
             <div class="d-none d-md-block col-md-4 text-center"><img src="{% static 'images/vector.png' %}" alt="vector image" class="img-fluid col-9"></div>
         </div>
     </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-3 col-12 mt-4 mx-0">
+        <div class="col illness_today" style="height: fit-content;">
+            <div class="card col-12 rounded p-3 border-0 text-center position-relative">
+                <i class="fa-solid fa-viruses position-absolute top-0 start-0 p-3 fs-5"></i>
+                <i class="fa-solid fa-viruses position-absolute top-0 end-0 p-3"></i>
+                <i class="fa-solid fa-viruses position-absolute bottom-0 start-0 p-3"></i>
+                <i class="fa-solid fa-viruses position-absolute bottom-0 end-0 p-3 fs-5"></i>
+                <small class="mt-3"><small>Illness for Today</small></small>
+                <span class="fs-4 fw-semibold mb-3">Corona Virus</span>
+                <p style="color: var(--text_color);">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque consequatur ad eos consectetur necessitatibus omnis?...</p>
+            </div>
+        </div>
+
+        <div class="col dashboard_bookings">
+            <div class="card col-12 rounded p-3 border-0 position-relative" style="background: var(--card_bg_inclined); box-shadow: var(--shadow); height: 50vh;">
+                <span class="fs-5 fw-semibold">Your Bookings</span>
+                <ul class="list-group mt-3 overflow-auto">
+                    <li class="list-group-item border-0 mt-2 px-0 bg-transparent border-bottom">
+                        <span class="fw-semibold">Appointment Title</span>
+                        <div class="d-flex justify-content-between">
+                            <small>Dr. Michael Oyinda</small>
+                            <small><i class="fa-regular fa-calendar"></i> Oct. 22, 2022</small>
+                        </div>
+                    </li>
+                    <li class="list-group-item border-0 mt-2 px-0 bg-transparent border-bottom">
+                        <span class="fw-semibold">Appointment Title</span>
+                        <div class="d-flex justify-content-between">
+                            <small>Dr. Michael Oyinda</small>
+                            <small><i class="fa-regular fa-calendar"></i> Oct. 22, 2022</small>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#" class="btn text-primary position-absolute bottom-0 start-0 col-12" style="background: var(--card_bg_inclined);">View All</a>
+            </div>
+        </div>
+
+        <div class="col notes_doctor">
+            <div class="card col-12 rounded p-3 border-0 overflow-auto" style="max-height: 50vh;">
+                <span class="fs-5 fw-semibold mt-3">Doctor's Notes</span>
+                <ul class="list-group overflow-auto">
+                    <li class="list-group-item border-0 mt-2 px-0 bg-transparent border-bottom">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique doloremque est officia culpa ipsum eveniet!</span>
+                    </li>
+                    <li class="list-group-item border-0 mt-2 px-0 bg-transparent border-bottom">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique doloremque est officia culpa ipsum eveniet!</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<script>
+    if(window.innerWidth > 991){
+        $(".notes_doctor").css("margin-top", `-${($(".dashboard_bookings").height() - $(".illness_today").height()) * 0.7}px`)
+    }else if(window.innerWidth > 767){
+        $(".notes_doctor").css("margin-top", `-${($(".dashboard_bookings").height() - $(".illness_today").height()) * 0.95}px`)
+    }
+</script>

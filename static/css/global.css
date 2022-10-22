@@ -15,7 +15,7 @@
     --blue_shade: #CBDBFA;
     --green_shade: #E3F3D8;
     --purple_shade: #E3D6F2;
-    --shadow: 0 5px 15px #E5E5E5;
+    --shadow: 0 5px 10px #E5E5E5;
     --text_color: #505666;
 }
 
@@ -40,6 +40,12 @@ body {
 .main{
     height: calc(100vh - 4rem);
     overflow: auto;
+}
+.main::-webkit-scrollbar, .card ul::-webkit-scrollbar{
+    width: 4px;
+}
+.main::-webkit-scrollbar-thumb, .card ul::-webkit-scrollbar-thumb{
+    background: #999;
 }
 
 .card{
