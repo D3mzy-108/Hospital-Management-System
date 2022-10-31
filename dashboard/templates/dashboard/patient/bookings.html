@@ -82,6 +82,10 @@
         </div>
         {% endfor %}
 
+        {% else %}
+
+        <p class="py-5 my-5 text-center">You have no appointments</p>
+
         {% endif %}
 
     </div>
@@ -91,25 +95,25 @@
 <!-- CREATE APPOINTMENT -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="background: var(--card_bg_transparent);">
+        <div class="modal-content border-0 p-3" style="background: var(--body_bg);">
             <div class="modal-header border-0">
-                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Create Appointment</h1>
-                <button type="button" class="btn text-light" data-bs-dismiss="modal" aria-label="Close"><i
+                <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Create Appointment</h1>
+                <button type="button" class="btn text-dark" data-bs-dismiss="modal" aria-label="Close"><i
                         class="fa-solid fa-xmark fs-5"></i></button>
             </div>
-            <div class="modal-body border-0 text-white">
+            <div class="modal-body border-0 text-dark">
                 <form action="{% url 'create_appointment' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="">Type in the reason for the appointment</label>
-                        <input type="text" name="reason" id="" class="form-control text-white mt-2"
-                            style="background: var(--card_bg_inclined);" required>
+                        <input type="text" name="reason" id="" class="form-control text-dark mt-2 border-0"
+                            style="background: var(--card_bg_inclined); box-shadow: var(--shadow);" required>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="">Select one of our qualified doctors</label>
-                        <select name="doctor" id="" class="form-select text-white mt-2"
-                            style="background: var(--card_bg_inclined);">
+                        <select name="doctor" id="" class="form-select text-dark mt-2 border-0"
+                            style="background: var(--card_bg_inclined); box-shadow: var(--shadow);">
 
                             {% for doctor in doctors %}
                             <option value="{{doctor.pk}}" style="color: var(--text_color);">{{doctor.username}}</option>
@@ -120,17 +124,17 @@
 
                     <div class="form-group mt-3">
                         <label for="">Set preferred date</label>
-                        <input type="date" name="date" id="" class="form-control text-white mt-2"
-                            style="background: var(--card_bg_inclined);" required>
+                        <input type="date" name="date" id="" class="form-control text-dark mt-2 border-0"
+                            style="background: var(--card_bg_inclined); box-shadow: var(--shadow);" required>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="">Set preferred time</label>
-                        <input type="time" name="time" id="" class="form-control text-white mt-2"
-                            style="background: var(--card_bg_inclined);" required>
+                        <input type="time" name="time" id="" class="form-control text-dark mt-2 border-0"
+                            style="background: var(--card_bg_inclined); box-shadow: var(--shadow);" required>
                     </div>
                     <div class="d-flex">
-                        <button type="submit" class="btn text-light ms-auto">Save</button>
+                        <button type="submit" class="btn text-dark ms-auto mt-3 px-5" style="background: var(--card_bg_inclined); box-shadow: var(--shadow);">Save</button>
                     </div>
                 </form>
             </div>

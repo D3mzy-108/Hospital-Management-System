@@ -1,14 +1,20 @@
 from django.shortcuts import render, redirect
 from dashboard.models import Appointment
 from user_auth.models import User
+from django.core.paginator import Paginator
 
 
 # Create your views here.
 def patient_dashboard(request, username):
+    page = request.GET.get('page')
     appointments = request.user.appointments.all().order_by('-date')
+    
+    appointment_summary = Paginator(appointments, 2).get_page(page)
+    
     doctors = User.objects.filter(staff_type="doctor")
     
     context = {
+        'appointment_summary': appointment_summary,
         'appointments': appointments,
         'doctors': doctors,
     }
