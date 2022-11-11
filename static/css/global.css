@@ -41,10 +41,10 @@ body {
     height: calc(100vh - 4rem);
     overflow: auto;
 }
-.main::-webkit-scrollbar, .card ul::-webkit-scrollbar{
+.main::-webkit-scrollbar, .card ul::-webkit-scrollbar, .card::-webkit-scrollbar{
     width: 4px;
 }
-.main::-webkit-scrollbar-thumb, .card ul::-webkit-scrollbar-thumb{
+.main::-webkit-scrollbar-thumb, .card ul::-webkit-scrollbar-thumb, .card::-webkit-scrollbar-thumb{
     background: #999;
 }
 
@@ -69,7 +69,12 @@ body {
     .sidenav a{
         position: static !important;
     }
+    .dashboard_body{
+        height: calc(100vh - 9rem) !important;
+        overflow: auto;
+    }
 }
+
 
 h1,
 h2,

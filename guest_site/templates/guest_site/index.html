@@ -1123,34 +1123,16 @@
         <div class="container py-5">
             <h3 class="text-center py-3">our specialists</h3>
             <div class="row m-0 p-0">
+                {% for doctor in doctors %}
                 <div class="col-12 col-md-4 col-lg-3 p-2">
                     <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
                         <img src="{% static 'images/user_avatar1.png' %}" alt="staff"
                             class="img-fluid col-8 rounded-pill"><br>
-                        <span class="fs-5">Doctor's Name</span>
+                        <span class="fs-5">{{doctor.username}}</span><br>
+                        <small>{{doctor.area_of_specialization}}</small>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3 p-2">
-                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
-                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff"
-                            class="img-fluid col-8 rounded-pill"><br>
-                        <span class="fs-5">Doctor's Name</span>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-3 p-2">
-                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
-                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff"
-                            class="img-fluid col-8 rounded-pill"><br>
-                        <span class="fs-5">Doctor's Name</span>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-3 p-2">
-                    <div class="col-12 p-3 text-center rounded" style="background: var(--card_bg);">
-                        <img src="{% static 'images/user_avatar1.png' %}" alt="staff"
-                            class="img-fluid col-8 rounded-pill"><br>
-                        <span class="fs-5">Doctor's Name</span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
